@@ -24,8 +24,8 @@ const MainPage = () => {
     const filteredItems : itemType[]= items.filter((item : itemType) => item.itemName.toLowerCase().includes(searchTool.toLowerCase()));
     const [hasItems , setHasItems] = useState<boolean>(filteredItems.length !== 0);
     useEffect(() => {
-        setHasItems(filteredItems.length !== 0);
-    },[filteredItems]);
+        setHasItems(items.length !== 0);
+    },[items]);
     useEffect(() => {
         localStorage.setItem('items' , JSON.stringify(filteredItems));
     },[filteredItems]);
