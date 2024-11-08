@@ -36,7 +36,7 @@ const AddGoods = () => {
         }
         dispatch(goodsActions.addItem(item));
         toast('تمت اضافة العنصر بنجاج',{
-            duration : 3000,
+            duration : 2000,
             position : "bottom-center",
             style : {
                 backgroundColor : '#3b82f6',
@@ -46,7 +46,7 @@ const AddGoods = () => {
             },
             icon: <IoCheckmarkDoneCircleSharp />,
         });
-        setTimeout(() => {navigate('/')} , 3000);
+        setTimeout(() => {navigate('/')} , 2000);
         setItemName('');
         setCompanyName('');
         setQuantity(0);

@@ -8,7 +8,7 @@ const MainSlice = createSlice({
     initialState,
     reducers : {
         addItem (state , action) {
-            const cartItem  = state.items.find((item) => item.itemName == action.payload.itemName );
+            const cartItem  = state.items.find((item) => item.itemName.trim() == action.payload.itemName.trim());
             const cartItemIndex = cartItem ? state.items.indexOf(cartItem) : null;
             if(cartItem) {
                 const updateItem = {...cartItem , quantity : cartItem.quantity + action.payload.quantity};
@@ -16,7 +16,7 @@ const MainSlice = createSlice({
                 state.items[cartItemIndex]=updateItem;
             }
             else {
-                state.items.push(action.payload);
+                state.items = state.items.concat(action.payload);
             }
         },
         removeItem (state , action) {
