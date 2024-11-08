@@ -40,7 +40,7 @@ const MainPage = () => {
         </Box>}
     {hasItems && <SimpleGrid gap='10px' minChildWidth='300px'  direction={'rtl'} >
     {filteredItems.map((item : itemType) => <Card.Root p='15px 30px 25px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
-    bg='gray.0'>
+    bg='gray.50'>
         <Card.Header textAlign={'center'}>
             <Text>مجمع زهرة الكميليا</Text>
             <Text ml={'30px'} mt={'-7px'}>Camellia Market</Text>

@@ -61,7 +61,7 @@ const AddGoods = () => {
         </Box>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">اسم الشركة المصنعة</label>
-        <Input value={companyName} placeholder="ادخل اسم الشركة المصنغة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
+        <Input value={companyName} placeholder="ادخل اسم الشركة المصنعة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
         bg='gray.100'
         onChange={changeCompanyNameHandler}/>
         </Box>
