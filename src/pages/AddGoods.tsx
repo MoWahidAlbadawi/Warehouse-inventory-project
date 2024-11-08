@@ -55,15 +55,21 @@ const AddGoods = () => {
         <form className="__AddGoodsform" onSubmit={submitDataHandler}>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">اسم الصنف</label>
-        <Input value={itemName} placeholder="ادخل اسم الصنف" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' onChange={changeItemNameHandler}/>
+        <Input value={itemName} placeholder="ادخل اسم الصنف" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px'
+        bg='gray.100'
+        onChange={changeItemNameHandler}/>
         </Box>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">اسم الشركة المصنعة</label>
-        <Input value={companyName} placeholder="ادخل اسم الشركة المصنغة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' onChange={changeCompanyNameHandler}/>
+        <Input value={companyName} placeholder="ادخل اسم الشركة المصنغة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
+        bg='gray.100'
+        onChange={changeCompanyNameHandler}/>
         </Box>
         <Box m='15px 10px'>
         <label className="__AddGoodslabel">الكمية</label>
-        <Input value={quantity} type='number' placeholder="الكمية هنا" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' onChange={changeQuantityHandler}/>
+        <Input value={quantity} type='number' placeholder="الكمية هنا" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
+        bg='gray.100'
+        onChange={changeQuantityHandler}/>
         </Box>
         <Box>
         <Box textAlign={'left'}>

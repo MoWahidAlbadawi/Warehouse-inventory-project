@@ -36,3 +36,8 @@ html {
   font-weight: bold;
   font-size: large;
 }
+@media (max-width : 351px ) {
+  .__Navbar-logo {
+    display: none;
+  }
+}
