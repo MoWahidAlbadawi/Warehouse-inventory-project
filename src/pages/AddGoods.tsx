@@ -57,19 +57,19 @@ const AddGoods = () => {
         <label className="__AddGoodslabel">اسم الصنف</label>
         <Input value={itemName} placeholder="ادخل اسم الصنف" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px'
         bg='gray.100'
-        onChange={changeItemNameHandler}/>
+        onChange={changeItemNameHandler} required/>
         </Box>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">اسم الشركة المصنعة</label>
         <Input value={companyName} placeholder="ادخل اسم الشركة المصنعة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
         bg='gray.100'
-        onChange={changeCompanyNameHandler}/>
+        onChange={changeCompanyNameHandler} required/>
         </Box>
         <Box m='15px 10px'>
         <label className="__AddGoodslabel">الكمية</label>
         <Input value={quantity} type='number' placeholder="الكمية هنا" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
         bg='gray.100'
-        onChange={changeQuantityHandler}/>
+        onChange={changeQuantityHandler} required/>
         </Box>
         <Box>
         <Box textAlign={'left'}>
