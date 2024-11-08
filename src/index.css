@@ -36,6 +36,17 @@ html {
   font-weight: bold;
   font-size: large;
 }
+.__Main-page-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: large;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  cursor: pointer;
+}
+.__Main-page-button:hover {
+  background-color: azure;
+}
 @media (max-width : 351px ) {
   .__Navbar-logo {
     display: none;

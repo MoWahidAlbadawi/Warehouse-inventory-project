@@ -1,5 +1,5 @@
 import NoItems from "../components/NoItems";
-import {  Box, Button, Card, Heading, Input, SimpleGrid, Text } from "@chakra-ui/react";
+import {  Box , Card, Heading, Input, SimpleGrid, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { itemType } from "../Types/Types";
 import { goodsActions } from "../store";
@@ -46,14 +46,14 @@ const MainPage = () => {
             <Text>مجمع زهرة الكميليا</Text>
             <Text ml={'30px'} mt={'-7px'}>Camellia Market</Text>
         </Card.Header>
-        <Card.Body my={'30px'} borderColor={'blue.100'} borderWidth={'1px 0 1px 0 '} paddingY='20px'>
+        <Card.Body my={'30px'} borderColor={'blue.200'} borderWidth={'1px 0 1px 0 '} paddingY='20px'>
         <Heading>{item.itemName}</Heading>
         <Text mt='4px' mr='-10px'>شركة {item.companyName}</Text>
             <Heading mt='20px' color='blue.500'> x{item.quantity} طرد</Heading>
             </Card.Body>
         <Card.Footer textAlign={'center'}>
-            <Button p='10px' colorPalette='blue' variant='outline' px='10px' fontSize={'lg'} onClick={() => addByPlus(item)}>+</Button>
-            <Button p='10px' colorPalette='blue' variant='outline' px='10px' fontSize={'lg'} onClick={() => removeByMinus(item.itemName)}>-</Button>
+            <button className="__Main-page-button" onClick={() => addByPlus(item)}>+</button>
+            <button className="__Main-page-button" onClick={() => removeByMinus(item.itemName)}>-</button>
         </Card.Footer>
     </Card.Root>)}
     </SimpleGrid>}
