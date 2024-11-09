@@ -48,13 +48,13 @@ const MainPage = () => {
         setSearchTool(e.target.value);
     }
     const filteredItems : itemType[]= items.filter((item : itemType) => item.itemName.toLowerCase().includes(searchTool.toLowerCase()));
-    const [hasItems , setHasItems] = useState<boolean>(filteredItems.length !== 0);
+    const [hasItems , setHasItems] = useState<boolean>(items.length !== 0);
     useEffect(() => {
         setHasItems(items.length !== 0);
     },[items]);
     useEffect(() => {
-        localStorage.setItem('items' , JSON.stringify(filteredItems));
-    },[filteredItems]);
+        localStorage.setItem('items' , JSON.stringify(items));
+    },[items]);
     return (
     <Box p='5px'>
         {!hasItems && <NoItems />}
