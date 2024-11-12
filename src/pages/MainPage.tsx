@@ -7,16 +7,29 @@ import { VscSearch } from "react-icons/vsc";
 import { useEffect, useState } from "react";
 import { toast , Toaster } from 'react-hot-toast';
 import { BiBookmarkPlus , BiBookmarkMinus  } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 const MainPage = () => {
+    const [t , il8n] = useTranslation();
+    const [direction , setDirection] = useState('rtl');
     const dispatch = useDispatch();
     const [searchTool , setSearchTool] = useState<string>('');
     const items = useSelector((state : {items : itemType[]}) => state.items);
+
+    useEffect(() => {
+        if(il8n.language === 'ar') {
+            setDirection('rtl');
+        } 
+        else {
+            setDirection('ltr');
+        }
+    }, [il8n.language]);
+
     function addByPlus (item : itemType) : void {
         dispatch(goodsActions.addItem({
             ...item ,
             quantity : 1,
         }));
-        toast('تم زيادة عنصر واحد',{
+        toast(t('addOneItem'),{
             position : 'bottom-center',
             duration : 1500,
             style : {
@@ -31,7 +44,7 @@ const MainPage = () => {
 
     function removeByMinus (name : string) : void {
         dispatch(goodsActions.removeItem(name));
-        toast('تم سحب عنصر واحد',{
+        toast(t('removeOneItem'),{
             position : 'bottom-center',
             duration : 1500,
             style : {
@@ -65,7 +78,7 @@ const MainPage = () => {
          onChange={changeSearchHandler} />
         <Box fontSize={'lg'} color={'gray.400'} m='12px 0 0 -30px' zIndex={'3'}><VscSearch /></Box>
         </Box>}
-    {hasItems && <SimpleGrid gap='10px' minChildWidth='300px'  direction={'rtl'} >
+    {hasItems && <SimpleGrid gap='10px' minChildWidth='300px' direction={direction}>
     {filteredItems.map((item : itemType) => <Card.Root p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
@@ -75,8 +88,8 @@ const MainPage = () => {
         </Card.Header> */}
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
         <Heading>{item.itemName}</Heading>
-        <Text mt='4px' mr='-10px'>شركة {item.companyName}</Text>
-            <Heading mt='10px' color='blue.500'> x{item.quantity} طرد</Heading>
+        <Text mt='4px' mr='-10px'>{`${t('company')} ${item.itemName}`}</Text>
+            <Heading mt='10px' color='blue.500'>{`x${item.quantity}`}</Heading>
             </Card.Body>
         <Card.Footer textAlign={'center'}>
             <button className="__Main-page-button" onClick={() => addByPlus(item)}>+</button>

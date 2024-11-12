@@ -12,13 +12,12 @@ html {
   border-bottom: 2px dotted #14204a;
 }
 .__AddGoodsform {
-  direction: rtl;
   padding: relative;
   display: block;
   color: black;
   width: 60%;
   border-radius: 10px;
-  margin : 30px auto; 
+  margin : 6px auto; 
   background-color: white;
   padding: 15px;
 }
@@ -35,6 +34,7 @@ html {
 .__AddGoodslabel {
   font-weight: bold;
   font-size: large;
+  margin-left: 10px;
 }
 .__Main-page-button {
   padding: 10px 20px;

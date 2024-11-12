@@ -2,19 +2,32 @@
 import { itemType } from "../Types/Types";
 
 import { Button , Box, Input} from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goodsActions } from "../store";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from 'react-hot-toast';
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 const AddGoods = () => {
+    const [t , il8n] = useTranslation();
+    const [direction , setDirection] = useState<string>('rtl');
     const dispatch = useDispatch();
     const [itemName,setItemName] = useState<string>('');
     const [companyName , setCompanyName] = useState<string>('');
     const [quantity,setQuantity] = useState<number>(0);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(il8n.language === 'ar') {
+            setDirection('rtl');
+        } 
+        else {
+            setDirection('ltr');
+        }
+    }, [il8n.language]);
+
     function changeItemNameHandler(e : React.ChangeEvent<HTMLInputElement>) {
         setItemName(e.target.value);
     }
@@ -35,7 +48,7 @@ const AddGoods = () => {
             quantity,
         }
         dispatch(goodsActions.addItem(item));
-        toast('تمت اضافة العنصر بنجاج',{
+        toast(t('addItemSuccessful'),{
             duration : 2000,
             position : "bottom-center",
             style : {
@@ -52,28 +65,28 @@ const AddGoods = () => {
         setQuantity(0);
     }
     return( 
-        <form className="__AddGoodsform" onSubmit={submitDataHandler}>
+        <form className="__AddGoodsform" onSubmit={submitDataHandler} style={{direction}} >
         <Box m={'15px 10px'}> 
-        <label className="__AddGoodslabel">اسم الصنف</label>
-        <Input value={itemName} placeholder="ادخل اسم الصنف" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px'
+        <label className="__AddGoodslabel">{t('itemName')}</label>
+        <Input value={itemName} placeholder={t('enterItemName')} size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px'
         bg='gray.100'
         onChange={changeItemNameHandler} required/>
         </Box>
         <Box m={'15px 10px'}> 
-        <label className="__AddGoodslabel">اسم الشركة المصنعة</label>
-        <Input value={companyName} placeholder="ادخل اسم الشركة المصنعة" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
+        <label className="__AddGoodslabel">{t('companyName')}</label>
+        <Input value={companyName} placeholder={t('enterCompanyName')} size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
         bg='gray.100'
         onChange={changeCompanyNameHandler} required/>
         </Box>
         <Box m='15px 10px'>
-        <label className="__AddGoodslabel">الكمية</label>
-        <Input value={quantity} type='number' placeholder="الكمية هنا" size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
+        <label className="__AddGoodslabel">{t('quantity')}</label>
+        <Input value={quantity} type='number' size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px' 
         bg='gray.100'
         onChange={changeQuantityHandler} required/>
         </Box>
         <Box>
         <Box textAlign={'left'}>
-    <Button type="submit" colorPalette={'blue'} padding={'10px 20px'} m={'20px'} fontSize={'larger'}>إضافة</Button>
+    <Button type="submit" colorPalette={'blue'} padding={'10px 20px'} m={'20px'} fontSize={'larger'}>{t('add')}</Button>
     </Box>
     </Box>
         <Toaster />

@@ -6,6 +6,7 @@ import { Provider as ChakraProvider} from './components/ui/provider.tsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import { store } from './store/index.tsx'
+import './il8n.ts'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
