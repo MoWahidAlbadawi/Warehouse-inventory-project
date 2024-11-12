@@ -47,6 +47,19 @@ html {
 .__Main-page-button:hover {
   background-color: azure;
 }
+.button-language {
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid #8eb2ec;
+  color: #164da5;
+  background-color: rgb(226, 226, 236);
+  cursor: pointer; 
+  margin-left: 5px;
+}
+.button-language:hover {
+  background-color: azure;
+}
 @media (max-width : 351px ) {
   .__Navbar-logo {
     display: none;
