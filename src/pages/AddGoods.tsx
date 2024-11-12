@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const AddGoods = () => {
     const [t , il8n] = useTranslation();
-    const [direction , setDirection] = useState<string>('rtl');
+    const [direction , setDirection] = useState<'rtl' | 'ltr'>('rtl');
     const dispatch = useDispatch();
     const [itemName,setItemName] = useState<string>('');
     const [companyName , setCompanyName] = useState<string>('');
@@ -65,7 +65,7 @@ const AddGoods = () => {
         setQuantity(0);
     }
     return( 
-        <form className="__AddGoodsform" onSubmit={submitDataHandler} style={{direction}} >
+        <form className="__AddGoodsform" onSubmit={submitDataHandler} style={{direction}}>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">{t('itemName')}</label>
         <Input value={itemName} placeholder={t('enterItemName')} size="lg" colorPalette={'blue'} variant={'subtle'} paddingRight={'10px'} mt='4px'
