@@ -16,7 +16,7 @@ function App() {
     <>
     <Navbar />
       <Container bg='gray.300' minHeight='90vh' p='20px'>
-      <Box textAlign={'right'}>
+      <Box textAlign={'right'} mt={{base : '-10px' , md : '-5px'}} mb={{base :  '30px' , md : '0px'}}>
         <Text color={'blue.800'} mb={'5px'} mr={'10px'}>{t('selectLanguage')}</Text>
     <Button onClick={() => changeLanguage('en')} colorPalette={'blue'} variant={'subtle'} padding={'10px'} mr={'5px'}>English</Button>
     <Button onClick={() => changeLanguage('ar')} colorPalette={'blue'} variant={'subtle'} padding={'10px'}>العربية</Button>
