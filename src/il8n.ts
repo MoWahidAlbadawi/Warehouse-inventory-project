@@ -23,7 +23,6 @@ i18n
           addOneItem : "add one item successfully",
           removeOneItem : "remove one item successfully",
           selectLanguage : "select language"
-          // أضف المزيد من النصوص هنا
         },
       },
       ar: {
@@ -43,14 +42,13 @@ i18n
           addOneItem : "تم زيادة عنصر واحد",
           removeOneItem : "تم سحب عنصر واحد",
           selectLanguage : "اختر اللغة"
-          // أضف المزيد من النصوص هنا
         },
       },
     },
-    lng: "ar", // اللغة الافتراضية
-    fallbackLng: "ar", // اللغة الاحتياطية في حالة عدم توفر النصوص
+    lng: "ar", 
+    fallbackLng: "ar", 
     interpolation: {
-      escapeValue: false, // لا حاجة للهروب من القيم في React
+      escapeValue: false, 
     },
   });
 

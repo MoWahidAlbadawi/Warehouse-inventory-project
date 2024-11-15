@@ -88,7 +88,7 @@ const MainPage = () => {
         </Card.Header> */}
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
         <Heading>{item.itemName}</Heading>
-        <Text mt='4px' mr='-10px'>{`${t('company')} ${item.itemName}`}</Text>
+        <Text mt='4px' mr='-10px'>{`${t('company')} ${item.companyName}`}</Text>
             <Heading mt='10px' color='blue.500'>{`x${item.quantity}`}</Heading>
             </Card.Body>
         <Card.Footer textAlign={'center'}>
