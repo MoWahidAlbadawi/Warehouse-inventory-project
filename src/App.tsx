@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage"
 import AddGoods from "./pages/AddGoods"
 import Navbar from "./components/Navbar"
 import { useTranslation } from 'react-i18next';
+import Footer from "./components/Footee"
 
 function App() {
   const [t , il8n] = useTranslation();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/addgoods" element={<AddGoods/>}/>
       </Routes>
     </Container>
+    <Footer />
     </>
   )
 }
