@@ -1,6 +1,5 @@
 import { Text , Box , Flex , Link} from "@chakra-ui/react";
 import MyPhoto from '../assets/Mohammad.jpg';
-import { useColorMode } from "./ui/color-mode";
 import { Avatar } from "./ui/avatar";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
