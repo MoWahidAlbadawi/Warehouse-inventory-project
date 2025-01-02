@@ -1,5 +1,5 @@
 import NoItems from "../components/NoItems";
-import {  Box , Card, Heading, Input, SimpleGrid, Text } from "@chakra-ui/react";
+import {  Box , Button , Card, Heading, Icon, Input, SimpleGrid, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { itemType } from "../Types/Types";
 import { goodsActions } from "../store";
@@ -8,10 +8,13 @@ import { useEffect, useState } from "react";
 import { toast , Toaster } from 'react-hot-toast';
 import { BiBookmarkPlus , BiBookmarkMinus  } from "react-icons/bi";
 import { Stack } from "@chakra-ui/react";
+import { FaEdit } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next"
 const MainPage = () => {
     const [t , il8n] = useTranslation();
     const [direction , setDirection] = useState('rtl');
+    const [showEditing , setShowEditing] = useState<boolean>(false);
     const dispatch = useDispatch();
     const [searchTool , setSearchTool] = useState<string>('');
     const items = useSelector((state : {items : itemType[]}) => state.items);
@@ -197,8 +200,16 @@ const MainPage = () => {
         <Text mt='4px' mr='-10px'>{`${t('company')} ${item.companyName}`}</Text>
             <Heading mt='10px' color='blue.500'>{`x${item.quantity}`}</Heading>
             </Card.Body>
-        <Card.Footer mr={-5} textAlign={'center'}>
+        <Card.Footer mr={-2} textAlign={'center'}>
             <Stack>
+            <Box>
+                <Button onClick={() => setShowEditing((prev) => !prev)}
+                    fontSize={'20px'} color={!showEditing ? 'blue.500' : 'red.600'}>
+                    {!showEditing ? 'Edit' : 'Close'}
+                <Icon>{!showEditing ? <FaEdit /> : <IoClose />}</Icon>
+                </Button>
+            </Box>
+            {showEditing && <Stack>
             <Stack gap={1} direction={'row'}>
             <button className="__Main-page-button-add" onClick={() => addQuarterByPlus(item)}>+0.25</button>
             <button className="__Main-page-button-add" onClick={() => addHalfByPlus(item)}>+0.5</button>
@@ -211,6 +222,7 @@ const MainPage = () => {
             <button className="__Main-page-button-remove" onClick={() => removeOneByMinus(item)}>-1</button>
             <button className="__Main-page-button-remove" onClick={() => removeFiveByMinus(item)}>-5</button>
             </Stack>
+            </Stack>}
             </Stack>
             <Toaster />
         </Card.Footer>
