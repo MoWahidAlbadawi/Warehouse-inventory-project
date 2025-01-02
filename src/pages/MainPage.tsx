@@ -188,7 +188,7 @@ const MainPage = () => {
         <Box fontSize={'lg'} color={'gray.400'} m='12px 0 0 -30px' zIndex={'3'}><VscSearch /></Box>
         </Box>}
     {hasItems && <SimpleGrid gap='10px' minChildWidth='300px' direction={direction}>
-    {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
+    {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.600' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
         {/* <Card.Header textAlign={'center'}>
@@ -198,15 +198,15 @@ const MainPage = () => {
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
         <Heading>{item.itemName}</Heading>
         <Text mt='4px' mr='-10px'>{`${t('company')} ${item.companyName}`}</Text>
-            <Heading mt='10px' color='blue.500'>{`x${item.quantity}`}</Heading>
+            <Heading mt='10px' color='blue.700'>{`x${item.quantity}`}</Heading>
             </Card.Body>
         <Card.Footer mr={-2} textAlign={'center'}>
             <Stack>
             <Box>
                 <Button onClick={() => setShowEditing((prev) => !prev)}
-                    fontSize={'20px'} color={!showEditing ? 'blue.500' : 'red.600'}>
+                    background='gray.50' fontSize={'20px'} color={!showEditing ? 'blue.700' : 'red.600'}>
                     {!showEditing ? 'Edit' : 'Close'}
-                <Icon>{!showEditing ? <FaEdit /> : <IoClose />}</Icon>
+                <Icon>{!showEditing ? <FaEdit />     : <IoClose />}</Icon>
                 </Button>
             </Box>
             {showEditing && <Stack>
