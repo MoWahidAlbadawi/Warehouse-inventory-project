@@ -20,20 +20,18 @@ const MainSlice = createSlice({
             }
         },
         removeItem (state , action) {
-            const cartItem = state.items.find((item) => item.itemName == action.payload);
+            const cartItem  = state.items.find((item) => item.itemName.trim() == action.payload.itemName.trim());
             const cartItemIndex = cartItem ? state.items.indexOf(cartItem) : null;
-            if(cartItem) {
-            if(cartItem.quantity > 1) {
-                const updateItem = {...cartItem , quantity : cartItem.quantity -1};
+            if(cartItem) 
+                if(cartItem.quantity > action.payload.quantity) {
+                const updateItem = {...cartItem , quantity : cartItem.quantity - action.payload.quantity};
                 if(cartItemIndex !== null) 
-                state.items[cartItemIndex] = updateItem;
+                state.items[cartItemIndex]=updateItem;
             }
             else {
-                state.items = state.items.filter((item) => item.itemName !==action.payload);
-            }  
-
-    } 
-}
+                state.items = state.items.filter((item) => item.itemName !== action.payload.itemName);
+            }
+        },
     }
 });
 

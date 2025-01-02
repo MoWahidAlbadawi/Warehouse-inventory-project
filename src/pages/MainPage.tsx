@@ -7,7 +7,8 @@ import { VscSearch } from "react-icons/vsc";
 import { useEffect, useState } from "react";
 import { toast , Toaster } from 'react-hot-toast';
 import { BiBookmarkPlus , BiBookmarkMinus  } from "react-icons/bi";
-import { useTranslation } from "react-i18next";
+import { Stack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next"
 const MainPage = () => {
     const [t , il8n] = useTranslation();
     const [direction , setDirection] = useState('rtl');
@@ -23,13 +24,13 @@ const MainPage = () => {
             setDirection('ltr');
         }
     }, [il8n.language]);
-
-    function addByPlus (item : itemType) : void {
+    //Add buttons
+    function addQuarterByPlus (item : itemType) : void {
         dispatch(goodsActions.addItem({
             ...item ,
-            quantity : 1,
+            quantity : 0.25,
         }));
-        toast(t('addOneItem'),{
+        toast(t('addItemButton'),{
             position : 'bottom-center',
             duration : 1500,
             style : {
@@ -41,10 +42,115 @@ const MainPage = () => {
             icon : <BiBookmarkPlus />,
         });
     }
-
-    function removeByMinus (name : string) : void {
-        dispatch(goodsActions.removeItem(name));
-        toast(t('removeOneItem'),{
+    function addHalfByPlus (item : itemType) : void {
+        dispatch(goodsActions.addItem({
+            ...item ,
+            quantity : 0.5,
+        }));
+        toast(t('addItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#2379c49e',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkPlus />,
+        });
+    }
+    function addOneByPlus (item : itemType) : void {
+        dispatch(goodsActions.addItem({
+            ...item ,
+            quantity : 1,
+        }));
+        toast(t('addItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#2379c49e',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkPlus />,
+        });
+    }
+    function addFiveByPlus (item : itemType) : void {
+        dispatch(goodsActions.addItem({
+            ...item ,
+            quantity : 5,
+        }));
+        toast(t('addItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#2379c49e',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkPlus />,
+        });
+    }
+    //remove buttons
+    function removeQuarterByMinus (item  : itemType) : void {
+        dispatch(goodsActions.removeItem({
+            ...item,
+            quantity : 0.25,
+        }));
+        toast(t('removeItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#c4123bd1',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkMinus />,
+        });
+    }
+    function removeHalfByMinus (item  : itemType) : void {
+        dispatch(goodsActions.removeItem({
+            ...item,
+            quantity : 0.5,
+        }));
+        toast(t('removeItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#c4123bd1',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkMinus />,
+        });
+    }
+    function removeOneByMinus (item  : itemType) : void {
+        dispatch(goodsActions.removeItem({
+            ...item,
+            quantity : 1,
+        }));
+        toast(t('removeItemButton'),{
+            position : 'bottom-center',
+            duration : 1500,
+            style : {
+                backgroundColor : '#c4123bd1',
+                padding : '10px',
+                borderRadius : '10px',
+                color : 'white'
+            },
+            icon : <BiBookmarkMinus />,
+        });
+    }
+    function removeFiveByMinus (item  : itemType) : void {
+        dispatch(goodsActions.removeItem({
+            ...item,
+            quantity : 5,
+        }));
+        toast(t('removeItemButton'),{
             position : 'bottom-center',
             duration : 1500,
             style : {
@@ -79,7 +185,7 @@ const MainPage = () => {
         <Box fontSize={'lg'} color={'gray.400'} m='12px 0 0 -30px' zIndex={'3'}><VscSearch /></Box>
         </Box>}
     {hasItems && <SimpleGrid gap='10px' minChildWidth='300px' direction={direction}>
-    {filteredItems.map((item : itemType) => <Card.Root p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
+    {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
         {/* <Card.Header textAlign={'center'}>
@@ -91,9 +197,21 @@ const MainPage = () => {
         <Text mt='4px' mr='-10px'>{`${t('company')} ${item.companyName}`}</Text>
             <Heading mt='10px' color='blue.500'>{`x${item.quantity}`}</Heading>
             </Card.Body>
-        <Card.Footer textAlign={'center'}>
-            <button className="__Main-page-button" onClick={() => addByPlus(item)}>+</button>
-            <button className="__Main-page-button" onClick={() => removeByMinus(item.itemName)}>-</button>
+        <Card.Footer mr={-5} textAlign={'center'}>
+            <Stack>
+            <Stack gap={1} direction={'row'}>
+            <button className="__Main-page-button-add" onClick={() => addQuarterByPlus(item)}>+0.25</button>
+            <button className="__Main-page-button-add" onClick={() => addHalfByPlus(item)}>+0.5</button>
+            <button className="__Main-page-button-add" onClick={() => addOneByPlus(item)}>+1</button>
+            <button className="__Main-page-button-add" onClick={() => addFiveByPlus(item)}>+5</button>
+            </Stack>
+            <Stack gap={1} direction={'row'} >
+            <button className="__Main-page-button-remove" onClick={() => removeQuarterByMinus(item)}>-0.25</button>
+            <button className="__Main-page-button-remove" onClick={() => removeHalfByMinus(item)}>-0.5</button>
+            <button className="__Main-page-button-remove" onClick={() => removeOneByMinus(item)}>-1</button>
+            <button className="__Main-page-button-remove" onClick={() => removeFiveByMinus(item)}>-5</button>
+            </Stack>
+            </Stack>
             <Toaster />
         </Card.Footer>
     </Card.Root>)}

@@ -36,15 +36,23 @@ html {
   font-size: large;
   margin-left: 10px;
 }
-.__Main-page-button {
+.__Main-page-button-add,
+.__Main-page-button-remove {
   padding: 10px 20px;
   border-radius: 6px;
-  font-size: large;
-  border: 1px solid #3b82f6;
-  color: #3b82f6;
+  font-size: 15px;
   cursor: pointer;
 }
-.__Main-page-button:hover {
+.__Main-page-button-add {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+}
+.__Main-page-button-remove {
+  border: 1px solid #c4123bd1;
+  color: #c4123bd1;
+} 
+.__Main-page-button-add:hover,
+.__Main-page-button--remove:hover {
   background-color: azure;
 }
 .button-language {

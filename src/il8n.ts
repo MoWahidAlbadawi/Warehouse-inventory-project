@@ -20,8 +20,8 @@ i18n
           quantity : "quantity",
           addItemSuccessful : "item added successfully",
           company : "Company",
-          addOneItem : "add one item successfully",
-          removeOneItem : "remove one item successfully",
+          addItemButton : "add successfully",
+          removeItemButton : "remove successfully",
           selectLanguage : "select language"
         },
       },
@@ -39,8 +39,8 @@ i18n
           quantity : "الكمية",
           addItemSuccessful : "تمت اضافة العنصر بنجاح",
           company : "شركة",
-          addOneItem : "تم زيادة عنصر واحد",
-          removeOneItem : "تم سحب عنصر واحد",
+          addItemButton : "تمت الإضافة بنجاح",
+          removeItemButton : "تم السحب بنجاح",
           selectLanguage : "اختر اللغة"
         },
       },
