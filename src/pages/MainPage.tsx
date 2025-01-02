@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next"
 const MainPage = () => {
     const [t , il8n] = useTranslation();
     const [direction , setDirection] = useState('rtl');
-    const [showEditing , setShowEditing] = useState<boolean>(false);
+    const [activeNameCard , setActiveNameCard] = useState<string | null>(null);
     const dispatch = useDispatch();
     const [searchTool , setSearchTool] = useState<string>('');
     const items = useSelector((state : {items : itemType[]}) => state.items);
@@ -191,10 +191,6 @@ const MainPage = () => {
     {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
-        {/* <Card.Header textAlign={'center'}>
-            <Text>مجمع زهرة الكميليا</Text>
-            <Text ml={'30px'} mt={'-7px'}>Camellia Market</Text>
-        </Card.Header> */}
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
         <Heading>{item.itemName}</Heading>
         <Text mt='4px' mr='-10px'>{`${t('company')} ${item.companyName}`}</Text>
@@ -203,13 +199,14 @@ const MainPage = () => {
         <Card.Footer mr={-2} textAlign={'center'}>
             <Stack>
             <Box>
-                <Button onClick={() => setShowEditing((prev) => !prev)}
-                    background='gray.50' fontSize={'20px'} color={!showEditing ? 'blue.700' : 'red.600'}>
-                    {!showEditing ? 'Edit' : 'Close'}
-                <Icon>{!showEditing ? <FaEdit />     : <IoClose />}</Icon>
-                </Button>
+                {activeNameCard != item.itemName && <Button onClick={() => setActiveNameCard(item.itemName)}
+                    background='gray.50' fontSize={'20px'} color={'blue.700'}>
+                    Edit<Icon><FaEdit /></Icon></Button>}
+                {activeNameCard == item.itemName && <Button onClick={() => setActiveNameCard(null)}
+                    background='gray.50' fontSize={'20px'} color={'red.600'}>
+                    Close<Icon><IoClose /></Icon></Button>}
             </Box>
-            {showEditing && <Stack>
+            {(activeNameCard == item.itemName) && <Stack>
             <Stack gap={1} direction={'row'}>
             <button className="__Main-page-button-add" onClick={() => addQuarterByPlus(item)}>+0.25</button>
             <button className="__Main-page-button-add" onClick={() => addHalfByPlus(item)}>+0.5</button>
