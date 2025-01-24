@@ -22,7 +22,8 @@ i18n
           company : "Company",
           addItemButton : "add successfully",
           removeItemButton : "remove successfully",
-          selectLanguage : "select language"
+          selectLanguage : "select language",
+          mainTitle : 'Warehouse inventory',
         },
       },
       ar: {
@@ -41,7 +42,8 @@ i18n
           company : "شركة",
           addItemButton : "تمت الإضافة بنجاح",
           removeItemButton : "تم السحب بنجاح",
-          selectLanguage : "اختر اللغة"
+          selectLanguage : "اختر اللغة",
+          mainTitle : 'جرد المستودع'
         },
       },
     },

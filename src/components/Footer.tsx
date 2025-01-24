@@ -4,6 +4,7 @@ import { Avatar } from "./ui/avatar";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
+import { Helmet } from "react-helmet";
 const Footer = () => {
 return <Flex as='footer' p={'25px 20px'} bg='blue.200' 
 color='gray.600'justifyContent={'space-around'} wrap={'wrap'} minWidth={'300px'} width={'100%'}>
@@ -13,7 +14,9 @@ color='gray.600'justifyContent={'space-around'} wrap={'wrap'} minWidth={'300px'}
             <Avatar name='Mohammad Wahid Albadawi' src={MyPhoto} />
             </Box>
             <Box>
+                <Helmet>
             <Text color='gray.900'fontWeight={'semibold'} fontSize={{base : 'sm' , md : 'lg'}}>MOHAMMAD WAHID ALBADAWI</Text>
+            </Helmet>
             <Text>ALL RIGHTS RESERVED</Text>
             </Box>
             </Flex>
