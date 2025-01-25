@@ -16,7 +16,7 @@ const Navbar = () => {
      };
 
     return <Box as='nav' color='white' bg='blue.500' p={{base : '5px' , sm : '10px' , md :'20px'}} borderRadius='7px'>
-        <Flex>
+        <Flex alignItems={'center'}>
         <MotionButton className="button-language" initial={{y : -100}} animate={{y : 0}} 
         transition={{duration : 1.5 , type : 'spring' , mass : 2 }}
         onClick={() => changeLanguage(il8n.language)}>{il8n.language === 'ar' ? 'En ' : 'Ar'}</MotionButton>
