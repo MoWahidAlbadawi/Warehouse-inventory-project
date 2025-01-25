@@ -11,6 +11,8 @@ import { Stack } from "@chakra-ui/react";
 import { FaEdit } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet";
+import { motion } from "motion/react"
 const MainPage = () => {
     const [t , il8n] = useTranslation();
     const [direction , setDirection] = useState('rtl');
@@ -18,7 +20,7 @@ const MainPage = () => {
     const dispatch = useDispatch();
     const [searchTool , setSearchTool] = useState<string>('');
     const items = useSelector((state : {items : itemType[]}) => state.items);
-
+    const MotionCard = motion(Card.Root);
     useEffect(() => {
         if(il8n.language === 'ar') {
             setDirection('rtl');
@@ -179,6 +181,10 @@ const MainPage = () => {
     },[items]);
     return (
     <Box p='5px'>
+        <Helmet>
+            <title>{t('warehouseCard')}</title>
+            <meta name="description" content="عرض البضائغ المخزنة في المستودع" />
+        </Helmet>
         {!hasItems && <NoItems />}
     {hasItems && <Box w={{base : '3/4' , sm : '1/2',  md : '1/4'}} display={'flex'} mb='20px' ml={{base : '10%' , sm : '25%' , md:'40%'}}> 
         <Input placeholder="search..." size="sm" colorPalette={'blue'} variant={'subtle'} mt='4px' p='10px' value={searchTool} 
@@ -188,7 +194,8 @@ const MainPage = () => {
         <Box fontSize={'lg'} color={'gray.400'} m='12px 0 0 -30px' zIndex={'3'}><VscSearch /></Box>
         </Box>}
     {hasItems && <SimpleGrid gap='10px' minChildWidth='300px' direction={direction}>
-    {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
+    {filteredItems.map((item : itemType,index) => <MotionCard initial={{x : -100}} whileInView={{x : 0}}
+     key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
@@ -223,7 +230,7 @@ const MainPage = () => {
             </Stack>
             <Toaster />
         </Card.Footer>
-    </Card.Root>)}
+    </MotionCard>)}
     </SimpleGrid>}
     </Box>
 );

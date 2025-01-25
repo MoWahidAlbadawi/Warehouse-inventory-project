@@ -8,7 +8,6 @@ i18n
     resources: {
       en: {
         translation: {
-          welcome: "Welcome",
           addItem : "Add Item",
           warehouseCard : "Warehouse Card",
           descriptionNoItems : "You do not have stock in the warehouse. Please purchase as soon as possible",
@@ -28,7 +27,6 @@ i18n
       },
       ar: {
         translation: {
-          welcome: "أهلا وسهلا",
           addItem : "إضافة بضاعة",
           warehouseCard : "بطاقة مستودع",
           descriptionNoItems : "ليس لديك بضاعة مخزنة في المستودع نرجو الشراء في أسرع وقت ممكن",

@@ -1,13 +1,25 @@
-import { Box, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Spacer, Text , Button} from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import { motion } from "motion/react"
 //for improve seo
-import {Helmet} from 'react-helmet'
 const Navbar = () => {
-    const [t ] = useTranslation();
+    const [t , il8n ] = useTranslation();
+    const MotionButton = motion(Button);
+    const changeLanguage = (lng: string) =>  {
+        if (lng === 'en') {
+         il8n.changeLanguage('ar');
+        } 
+        else {
+         il8n.changeLanguage('en');
+        }
+     };
+
     return <Box as='nav' color='white' bg='blue.500' p={{base : '5px' , sm : '10px' , md :'20px'}} borderRadius='7px'>
-        <Helmet>
         <Flex>
+        <MotionButton className="button-language" initial={{y : -100}} animate={{y : 0}} 
+        transition={{duration : 1.5 , type : 'spring' , mass : 2 }}
+        onClick={() => changeLanguage(il8n.language)}>{il8n.language === 'ar' ? 'En ' : 'Ar'}</MotionButton>
             <Heading as='h1' fontSize={{base : 'md' , sm : 'xl' , md : '2xl'}} width={{base : '100px' , sm : 'fit-content'}} m={{base : '15px 3px' , md : '10px'}}>{t('mainTitle')}</Heading>
             {/* <Heading as='h5' className="__Navbar-logo" mt='23px' ml={{base : '-80px',md : '-100px'}} fontSize={{base : 'sm' , md:'lg'}}>to </Heading> */}
             <Spacer />
@@ -16,7 +28,6 @@ const Navbar = () => {
                 <NavLink to='/' className={({isActive}) => (isActive ? 'active' : '')}><Text fontSize={{base : 'md' , sm : 'xl' , md:'2xl'}}>{t('warehouseCard')}</Text></NavLink>
             </Flex>
         </Flex>
-        </Helmet>
     </Box>
 }
 export default Navbar;
