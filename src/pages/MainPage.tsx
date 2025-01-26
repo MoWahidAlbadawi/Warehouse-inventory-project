@@ -20,7 +20,6 @@ const MainPage = () => {
     const dispatch = useDispatch();
     const [searchTool , setSearchTool] = useState<string>('');
     const items = useSelector((state : {items : itemType[]}) => state.items);
-    const MotionCard = motion(Card.Root);
     useEffect(() => {
         if(il8n.language === 'ar') {
             setDirection('rtl');
@@ -194,8 +193,7 @@ const MainPage = () => {
         <Box fontSize={'lg'} color={'gray.400'} m='12px 0 0 -30px' zIndex={'3'}><VscSearch /></Box>
         </Box>}
     {hasItems && <SimpleGrid gap='10px' minChildWidth='300px' direction={direction}>
-    {filteredItems.map((item : itemType,index) => <MotionCard initial={{x : -100}} whileInView={{x : 0}}
-     key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
+    {filteredItems.map((item : itemType,index) => <Card.Root key={index} p='0px 30px 20px' borderTopWidth='8px' borderTopColor='blue.500' marginLeft={{base : '5px' , sm : '0'}}
     bg='gray.50'
     color={'blackAlpha.900'}>
         <Card.Body my={'20px'} borderColor={'blue.200'} borderWidth={'0 0 1px 0 '} paddingBottom='10px'>
@@ -230,7 +228,7 @@ const MainPage = () => {
             </Stack>
             <Toaster />
         </Card.Footer>
-    </MotionCard>)}
+    </Card.Root>)}
     </SimpleGrid>}
     </Box>
 );

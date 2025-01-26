@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Spacer, Text , Button} from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import { motion } from "motion/react"
-//for improve seo
 const Navbar = () => {
     const [t , il8n ] = useTranslation();
     const MotionButton = motion(Button);
