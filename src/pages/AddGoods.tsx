@@ -19,6 +19,11 @@ const AddGoods = () => {
     const [quantity,setQuantity] = useState<number>(0);
     const navigate = useNavigate();
 
+    function downleadProton () {
+        window.location.href='https://pythacourse.com/PythaCourseApp.apk';
+    }
+
+
     useEffect(() => {
         if(il8n.language === 'ar') {
             setDirection('rtl');
@@ -96,6 +101,7 @@ const AddGoods = () => {
     </Box>
         <Toaster />
     </form>
+    <Button onClick={downleadProton}>Download</Button>
     </>
     );
 }

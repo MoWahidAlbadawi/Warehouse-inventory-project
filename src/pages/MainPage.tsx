@@ -12,7 +12,6 @@ import { FaEdit } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next"
 import { Helmet } from "react-helmet";
-import { motion } from "motion/react"
 const MainPage = () => {
     const [t , il8n] = useTranslation();
     const [direction , setDirection] = useState('rtl');
