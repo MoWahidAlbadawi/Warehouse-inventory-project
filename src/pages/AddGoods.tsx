@@ -67,10 +67,17 @@ const AddGoods = () => {
     }
     return( 
         <>
-        <Helmet>
+            <Helmet>
+            <html lang={il8n.language} dir={direction} />
             <title>{t('addItem')}</title>
-            <meta name="description" content="اضافة البضاعة الى بطاقة المستودغ من اجل عرضها في بطاقة المستودع" />
-        </Helmet>
+            <meta name="description" content={t('addItemMetaDescription')} />
+            <meta name="keywords" content={t('addItemMetaKeywords')} />
+            <meta name="robots" content="index, follow" />
+            <meta property="og:title" content={t('addItem')} />
+            <meta property="og:description" content={t('addItemMetaDescription')} />
+            <meta property="og:type" content="website" />
+            <meta property="og:locale" content={il8n.language === 'ar' ? 'ar_AR' : 'en_US'} />
+            </Helmet>
         <form className="__AddGoodsform" onSubmit={submitDataHandler} style={{direction}}>
         <Box m={'15px 10px'}> 
         <label className="__AddGoodslabel">{t('itemName')}</label>

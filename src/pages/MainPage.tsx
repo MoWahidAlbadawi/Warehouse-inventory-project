@@ -179,10 +179,19 @@ const MainPage = () => {
     },[items]);
     return (
     <Box p='5px'>
+        {/* seo */}
         <Helmet>
-            <title>{t('warehouseCard')}</title>
-            <meta name="description" content="عرض البضائغ المخزنة في المستودع" />
+        <html lang={il8n.language} dir={direction} />
+        <title>{t('warehouseCard')}</title>
+        <meta name="description" content={t('warehouseMetaDescription')} />
+        <meta name="keywords" content={t('warehouseMetaKeywords')} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content={t('warehouseCard')} />
+        <meta property="og:description" content={t('warehouseMetaDescription')} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content={il8n.language === 'ar' ? 'ar_AR' : 'en_US'} />
         </Helmet>
+
         {!hasItems && <NoItems />}
     {hasItems && <Box w={{base : '3/4' , sm : '1/2',  md : '1/4'}} display={'flex'} mb='20px' ml={{base : '10%' , sm : '25%' , md:'40%'}}> 
         <Input placeholder="search..." size="sm" colorPalette={'blue'} variant={'subtle'} mt='4px' p='10px' value={searchTool} 
